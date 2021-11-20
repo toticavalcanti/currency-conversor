@@ -26,12 +26,20 @@ class HomeView extends StatelessWidget {
                       child: SizedBox(
                         height: 57,
                         child: DropdownButton(
+                          value: 'Real',
                           isExpanded: true,
                           underline: Container(height: 1, color: Colors.amber),
                           items: const [
                             DropdownMenuItem(
+                              value: 'Real',
                               child: Text(
                                 'Real',
+                              ),
+                            ),
+                            DropdownMenuItem(
+                              value: 'Dolar',
+                              child: Text(
+                                'Dolar',
                               ),
                             ),
                           ],
