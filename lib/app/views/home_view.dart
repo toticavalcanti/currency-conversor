@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:money_conversor/app/components/currency_box.dart';
+import 'package:money_conversor/app/controllers/home_controller.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  final TextEditingController toText = TextEditingController();
+  final TextEditingController fromText = TextEditingController();
+
+  late HomeController homeController;
+
+  @override
+  void initState() {
+    homeController = HomeController(toText: toText, fromText: fromText);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,50 +28,11 @@ class HomeView extends StatelessWidget {
               Image.asset('assets/images/logo.png', width: 150, height: 150),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(
-                        height: 57,
-                        child: DropdownButton(
-                          value: 'Real',
-                          isExpanded: true,
-                          underline: Container(height: 1, color: Colors.amber),
-                          items: const [
-                            DropdownMenuItem(
-                              value: 'Real',
-                              child: Text(
-                                'Real',
-                              ),
-                            ),
-                            DropdownMenuItem(
-                              value: 'Dolar',
-                              child: Text(
-                                'Dolar',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    const Expanded(
-                        flex: 2,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.amber),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.amber),
-                            ),
-                          ),
-                        )),
-                  ],
-                ),
               ),
+              const SizedBox(height: 50),
+              CurrencyBox(),
+              const SizedBox(height: 10),
+              CurrencyBox(),
               const SizedBox(height: 50),
               ElevatedButton(
                   onPressed: () {},
